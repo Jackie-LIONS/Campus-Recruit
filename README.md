@@ -5,8 +5,25 @@
 
 #### 软件架构
  **Springboot 2.7.0**   **MyBatis-PLUS 3.5.0**   **SpringMVC**   **Vue** 
+![输入图片说明](images/11image.png)
 
+#### 重点难点
+1.算法设计
+协同过滤算法的设计：本项目使用的是基于物品的协同过滤算法，由于对算法设计的流程不熟悉，网上的推荐一般都是python调用库的方式实现，所以在设计过程中走了一定的弯路，查阅大量资料才总结出规律：
 
+构建职位-用户矩阵—计算职位之间的相似度—推荐得分最高的前K个职位
+
+计算职位相似度采用的是余弦相似度计算公式，推荐得分最高的职位需要排序，这里涉及到了Java的一些特有的比较方法，例如Collections的自带的排序方法，而且借助Comparator对象重写了排序规则。
+
+2.Md5加密算法
+首先只接收一个参数为password的参数，获取MessageDigest类的实例，该实例可以使用MD5算法进行加密；
+
+接着将password字符串转化为字节数组，并计算该字节数组的MD5值；使用Java中的BigInteger类将计算出的MD5值转化为一个表示16进制的字符串；
+
+如果MD5加密后的字符串不足32位，则在字符串的前面加上0，使其长度为32；最后返回MD5加密后的字符串。
+
+3.文件上传设计
+上传文件：上传文件并不是很难，但是这里涉及到了项目部署，部署到服务器之后，本地的路径就失效了，这里借助了Nginx反向代理技术将文件存储到服务器上。
 #### 安装教程
 
  **1.1设备** 
@@ -56,19 +73,18 @@ c. 网卡：Intel X540-2T及以上。
 
 使用ElementUI组件完成前端页面的快速布局
 
-#### 参与贡献
+#### 演示效果
+![输入图片说明](images/1image.png)
+![输入图片说明](images/2image.png)
+![输入图片说明](images/3image.png)
+![输入图片说明](images/4image.png)
+![输入图片说明](images/5image.png)
+![输入图片说明](images/6image.png)
+![输入图片说明](images/7image.png)
+![输入图片说明](images/8image.png)
+![输入图片说明](images/9image.png)
+![输入图片说明](images/10image.png)
+#### 最后
 
-1.  Fork 本仓库
-2.  新建 Feat_xxx 分支
-3.  提交代码
-4.  新建 Pull Request
-
-
-#### 特技
-
-1.  使用 Readme\_XXX.md 来支持不同的语言，例如 Readme\_en.md, Readme\_zh.md
-2.  Gitee 官方博客 [blog.gitee.com](https://blog.gitee.com)
-3.  你可以 [https://gitee.com/explore](https://gitee.com/explore) 这个地址来了解 Gitee 上的优秀开源项目
-4.  [GVP](https://gitee.com/gvp) 全称是 Gitee 最有价值开源项目，是综合评定出的优秀开源项目
-5.  Gitee 官方提供的使用手册 [https://gitee.com/help](https://gitee.com/help)
-6.  Gitee 封面人物是一档用来展示 Gitee 会员风采的栏目 [https://gitee.com/gitee-stars/](https://gitee.com/gitee-stars/)
+如果您需要，请关注我叭：[CSDN博主](http://lions.blog.csdn.net)
+                        vx：2373489842
