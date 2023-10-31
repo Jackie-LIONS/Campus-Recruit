@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jc.campusemploydemo.mapper.EducationMapper">
+    <resultMap id="BaseResultMap" type="com.jc.campusemploydemo.domain.Education">
+        <id property="id" column="id" jdbcType="INTEGER"/>
+        <result property="userId" column="user_id" jdbcType="INTEGER"/>
+        <result property="school" column="school" jdbcType="VARCHAR"/>
+        <result property="level" column="level" jdbcType="VARCHAR"/>
+        <result property="fromTime" column="from_time" jdbcType="VARCHAR"/>
+        <result property="toTime" column="to_time" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <sql id="Base_Column_List" >
+    id, user_id, school,level,from_time,to_time
+  </sql>
+    <select id="selectByUserId" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+        select
+        <include refid="Base_Column_List" />
+        from education
+        where user_id = #{userId,jdbcType=INTEGER}
+    </select>
+    <select id="selectByUserId1" resultType="com.jc.campusemploydemo.domain.Education">
+        select *from education where user_id = #{userId,jdbcType=INTEGER}
+    </select>
+
+    <update id="updateByUserIdSelective" parameterType="com.jc.campusemploydemo.domain.Education" >
+        update education
+        <set >
+            <if test="school != null" >
+                name = #{school,jdbcType=VARCHAR},
+            </if>
+            <if test="level != null" >
+                sex = #{level,jdbcType=VARCHAR},
+            </if>
+            <if test="fromTime != null" >
+                from_time = #{from_time,jdbcType=VARCHAR},
+            </if>
+            <if test="toTime != null" >
+                poli_status = #{to_time,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where user_id= #{userId,jdbcType=INTEGER} and id = #{id}
+    </update>
+</mapper>

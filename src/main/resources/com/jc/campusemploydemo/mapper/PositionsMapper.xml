@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.jc.campusemploydemo.mapper.PositionsMapper">
+    <resultMap id="BaseResultMap" type="com.jc.campusemploydemo.domain.Positions">
+        <id property="id" column="id" jdbcType="INTEGER"/>
+        <result property="pName" column="p_name" jdbcType="INTEGER"/>
+        <result property="pClassify" column="p_classify" jdbcType="VARCHAR"/>
+        <result property="pDescribe" column="p_describe" jdbcType="VARCHAR"/>
+        <result property="pResponsibility" column="p_responsibility" jdbcType="VARCHAR"/>
+        <result property="pRequest" column="p_request" jdbcType="VARCHAR"/>
+        <result property="pDepartment" column="p_department" jdbcType="VARCHAR"/>
+        <result property="pWorkSite" column="p_work_site" jdbcType="VARCHAR"/>
+        <result property="pFlag" column="p_flag" jdbcType="VARCHAR"/>
+        <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
+        <result property="updateTime" column="update_time" jdbcType="TIMESTAMP"/>
+        <result property="userId" column="user_id" jdbcType="INTEGER"/>
+    </resultMap>
+
+    <sql id="Base_Column_List" >
+    id, p_name, p_classify, p_describe, p_responsibility, p_request,p_department,p_work_site, p_flag,create_time, update_time,user_id
+  </sql>
+    <insert id="addCollection">
+        insert into collection values (default ,#{user_id},#{p_id},#{flag})
+    </insert>
+
+    <select id="findAll" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+        SELECT  * FROM positions WHERE 1=1
+        <if test=" pFlag!=null ">
+            and  p_flag = #{pFlag}
+        </if>
+        order BY create_time DESC
+    </select>
+<!--   查询所有-->
+    <select id="selectAll" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+        SELECT  * FROM positions
+        order BY create_time DESC
+    </select>
+
+    <select id="findCollectUidAndPid" resultType="java.lang.Integer">
+        select count(*) from collection  where p_id = #{p_id} and user_id = #{user_id}
+    </select>
+
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+        select
+        <include refid="Base_Column_List" />
+        from positions
+        where id = #{id,jdbcType=INTEGER}
+    </select>
+    <select id="findMaxId" resultType="java.lang.Integer">
+        SELECT MAX(id) FROM positions;
+    </select>
+
+</mapper>

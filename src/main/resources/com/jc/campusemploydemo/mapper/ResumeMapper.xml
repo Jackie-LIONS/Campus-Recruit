@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.jc.campusemploydemo.mapper.ResumeMapper">
+    <resultMap id="resumeMapper" type="com.jc.campusemploydemo.domain.Resume">
+        <id property="id" column="id" jdbcType="INTEGER"></id>
+        <result property="userId" column="user_id"></result>
+        <result property="username" column="username"></result>
+        <result property="email" column="email"></result>
+        <result property="phone" column="phone"></result>
+        <result property="pId" column="p_id" jdbcType="INTEGER"></result>
+        <result property="createTime" column="create_time"></result>
+        <result property="updateTime" column="update_time"></result>
+        <result property="r" column="R" jdbcType="INTEGER"></result>
+        <association property="positions" column="p_id" javaType="com.jc.campusemploydemo.bean.PositionsDetail">
+            <id property="id" column="id"></id>
+            <result property="pName" column="p_name"></result>
+            <result property="pClassify" column="p_classify"></result>
+            <result property="pDepartment" column="p_department"></result>
+            <result property="pWorkSite" column="p_work_site"></result>
+        </association>
+    </resultMap>
+    <select id="showAll" resultMap="resumeMapper">
+        SELECT
+	*
+FROM
+	resume
+	LEFT JOIN positions ON resume.p_id = positions.id
+ORDER BY
+	resume.id ASC
+    </select>
+
+    <select id="showMyCompany" parameterType="integer" resultMap="resumeMapper">
+        SELECT
+	r.* , p.*
+FROM
+	resume r
+	LEFT JOIN positions p ON r.p_id = p.id
+	LEFT JOIN `user` u ON u.uid = p.user_id
+WHERE
+	p.user_id = #{uid}
+    </select>
+</mapper>

@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jc.campusemploydemo.mapper.InformationMapper">
+    <resultMap id="BaseResultMap" type="com.jc.campusemploydemo.domain.Information">
+        <id property="id" column="id" jdbcType="INTEGER"/>
+        <result property="userId" column="user_id" jdbcType="INTEGER"/>
+        <result property="name" column="name" jdbcType="VARCHAR"/>
+        <result property="sex" column="sex" jdbcType="VARCHAR"/>
+        <result property="email" column="email" jdbcType="VARCHAR"/>
+        <result property="poliStatus" column="poli_status" jdbcType="VARCHAR"/>
+        <result property="phone" column="phone" jdbcType="VARCHAR"/>
+        <result property="photo" column="photo" jdbcType="VARCHAR"/>
+        <result property="files" column="files" jdbcType="VARCHAR"/>
+        <result property="jobIntension" column="job_intension" jdbcType="VARCHAR"/>
+        <result property="describes" column="describes" jdbcType="VARCHAR"/>
+        <association property="userId" column="user_id" resultMap="userMap"/>
+    </resultMap>
+    <resultMap id="userMap" type="com.jc.campusemploydemo.domain.User">
+        <id property="uid" column="uid" jdbcType="INTEGER"/>
+        <result property="roleId" column="role_id" jdbcType="INTEGER"/>
+    </resultMap>
+
+    <sql id="Base_Column_List" >
+    id, user_id, name, sex, email, poli_status, phone, photo, files, job_intension, describes,
+    create_time, update_time
+  </sql>
+
+    <select id="selectByUserId" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+        select
+        <include refid="Base_Column_List" />
+        from information
+        where user_id = #{userId,jdbcType=INTEGER}
+    </select>
+
+    <insert id="insertSelective" parameterType="com.jc.campusemploydemo.domain.Information" >
+        insert into information
+        <trim prefix="(" suffix=")" suffixOverrides="," >
+            <if test="id != null" >
+                id,
+            </if>
+            <if test="userId != null" >
+                user_id,
+            </if>
+            <if test="name != null" >
+                name,
+            </if>
+            <if test="sex != null" >
+                sex,
+            </if>
+            <if test="email != null" >
+                email,
+            </if>
+            <if test="poliStatus != null" >
+                poli_status,
+            </if>
+            <if test="phone != null" >
+                phone,
+            </if>
+            <if test="photo != null" >
+                photo,
+            </if>
+            <if test="files != null" >
+                files,
+            </if>
+
+            <if test="jobIntension != null">
+                job_intension
+            </if>
+
+            <if test="describes != null" >
+                describes,
+            </if>
+            <if test="createTime != null" >
+                create_time,
+            </if>
+            <if test="updateTime != null" >
+                update_time,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides="," >
+            <if test="id != null" >
+                #{id,jdbcType=INTEGER},
+            </if>
+            <if test="userId != null" >
+                #{userId,jdbcType=INTEGER},
+            </if>
+            <if test="name != null" >
+                #{name,jdbcType=VARCHAR},
+            </if>
+            <if test="sex != null" >
+                #{sex,jdbcType=VARCHAR},
+            </if>
+            <if test="email != null" >
+                #{email,jdbcType=VARCHAR},
+            </if>
+            <if test="poliStatus != null" >
+                #{poliStatus,jdbcType=VARCHAR},
+            </if>
+            <if test="phone != null" >
+                #{phone,jdbcType=VARCHAR},
+            </if>
+            <if test="photo != null" >
+                #{photo,jdbcType=VARCHAR},
+            </if>
+            <if test="files != null" >
+                #{files,jdbcType=VARCHAR},
+            </if>
+            <if test="jobIntension != null" >
+                #{jobIntension,jdbcType=VARCHAR},
+            </if>
+            <if test="describes != null" >
+                #{describes,jdbcType=VARCHAR},
+            </if>
+            <if test="createTime != null" >
+                #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updateTime != null" >
+                #{updateTime,jdbcType=TIMESTAMP},
+            </if>
+        </trim>
+    </insert>
+
+    <update id="updateByUserIdSelective" parameterType="com.jc.campusemploydemo.domain.Information" >
+        update information
+        <set >
+            <if test="name != null" >
+                name = #{name,jdbcType=VARCHAR},
+            </if>
+            <if test="sex != null" >
+                sex = #{sex,jdbcType=VARCHAR},
+            </if>
+            <if test="email != null" >
+                email = #{email,jdbcType=VARCHAR},
+            </if>
+            <if test="poliStatus != null" >
+                poli_status = #{poliStatus,jdbcType=VARCHAR},
+            </if>
+            <if test="phone != null" >
+                phone = #{phone,jdbcType=VARCHAR},
+            </if>
+            <if test="photo != null" >
+                photo = #{photo,jdbcType=VARCHAR},
+            </if>
+            <if test="files != null" >
+                files = #{files,jdbcType=VARCHAR},
+            </if>
+            <if test="jobIntension != null" >
+                job_intension = #{jobIntension,jdbcType=VARCHAR},
+            </if>
+            <if test="describes != null" >
+                describes = #{describes,jdbcType=VARCHAR},
+            </if>
+            <if test="createTime != null" >
+                create_time = #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updateTime != null" >
+                update_time = #{updateTime,jdbcType=TIMESTAMP},
+            </if>
+        </set>
+        where user_id= #{userId,jdbcType=INTEGER}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.jc.campusemploydemo.domain.Information" >
+    update information
+    set user_id = #{userId,jdbcType=INTEGER},
+      name = #{name,jdbcType=VARCHAR},
+      sex = #{sex,jdbcType=VARCHAR},
+      email = #{email,jdbcType=VARCHAR},
+      poli_status = #{poliStatus,jdbcType=VARCHAR},
+      phone = #{phone,jdbcType=VARCHAR},
+      photo = #{photo,jdbcType=VARCHAR},
+      files = #{files,jdbcType=VARCHAR},
+      job_intension = #{jobIntension,jdbcType=VARCHAR},
+      describes = #{describes,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
