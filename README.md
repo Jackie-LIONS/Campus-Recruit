@@ -5,8 +5,8 @@
 
 #### 软件架构
  **Springboot 2.7.0**   **MyBatis-PLUS 3.5.0**   **SpringMVC**   **Vue** 
-![输入图片说明](images/11image.png)
 
+![输入图片说明](Snipaste_2023-11-13_17-14-44.png)
 #### 重点难点
 1.算法设计
 协同过滤算法的设计：本项目使用的是基于物品的协同过滤算法，由于对算法设计的流程不熟悉，网上的推荐一般都是python调用库的方式实现，所以在设计过程中走了一定的弯路，查阅大量资料才总结出规律：
@@ -74,16 +74,17 @@ c. 网卡：Intel X540-2T及以上。
 使用ElementUI组件完成前端页面的快速布局
 
 #### 演示效果
-![输入图片说明](images/1image.png)
-![输入图片说明](images/2image.png)
-![输入图片说明](images/3image.png)
-![输入图片说明](images/4image.png)
-![输入图片说明](images/5image.png)
-![输入图片说明](images/6image.png)
-![输入图片说明](images/7image.png)
-![输入图片说明](images/8image.png)
-![输入图片说明](images/9image.png)
-![输入图片说明](images/10image.png)
+![输入图片说明](Snipaste_2023-11-13_17-12-54.png)
+![输入图片说明](Snipaste_2023-11-13_17-13-03.png)
+![输入图片说明](Snipaste_2023-11-13_17-13-12.png)
+![输入图片说明](Snipaste_2023-11-13_17-13-26.png)
+![输入图片说明](Snipaste_2023-11-13_17-13-38.png)
+![输入图片说明](Snipaste_2023-11-13_17-13-44.png)
+![输入图片说明](Snipaste_2023-11-13_17-13-53.png)
+![输入图片说明](Snipaste_2023-11-13_17-14-10.png)
+![输入图片说明](Snipaste_2023-11-13_17-14-21.png)
+
+
 #### 最后
 
 如果您需要，请关注我叭：[CSDN博主](http://lions.blog.csdn.net)
