@@ -4,7 +4,8 @@
  基于SpringBoot和Vue的校园招聘系统是一个完整的招聘管理系统，主要功能包括企业发布招聘信息、学生浏览和应聘职位、管理员管理用户和系统资源等。此外，系统还采用了协同过滤算法，为学生推荐最符合其求职意愿和条件的职位，提高求职成功率。系统优点在于快速、高效和易用，同时具有良好的用户体验和数据安全性，能够实现真正的招聘、招聘管理和人才管理的综合管理。
 
 ## 二、软件架构
- **Springboot 2.7.0**   **MyBatis-PLUS 3.5.0**   **SpringMVC**   **Vue** 
+              
+ ![](https://img.shields.io/badge/Java-11-orange) ![](https://img.shields.io/badge/MySQL-8.0-brightgreen) ![](https://img.shields.io/badge/SpringBoot-2.7.0-yellow) ![](https://img.shields.io/badge/MybatisPlus-3.5.0-red) ![](https://img.shields.io/badge/vue-2-yellowgreen)   ![](https://img.shields.io/badge/element--ui-blue)
 
 ![输入图片说明](Snipaste_2023-11-13_17-14-44.png)
 ## 三、重点难点
